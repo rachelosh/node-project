@@ -6,7 +6,6 @@ export const getAllUsers = async (req, res) => {
     try {
         let allusers = await User.find({}, "-password");//projection -לשלוך חלק מהשדות
         res.json(allusers);
-
     }
     catch (err) {
         res.status(500).send("an error occured in....")
@@ -17,8 +16,12 @@ export const login = async (req, res) => {
     let userValidat = userValidator({ email, userName, password })
     if (userValidat.error)
         return res.status(400).send(userValidat.error[0])
+    let filter = {
+         email,
+         userName
+    }
     try {
-        let loggedUser = await User.findOne({ userName, email });
+        let loggedUser = await User.findOne(filter);
         if (!loggedUser)
             return res.status(400).send("no user with such credentials");
         if (!await bcrypt.compare(password, loggedUser.password))

@@ -20,7 +20,7 @@ export const userValidator = (_userToValidate) => {
         password: Joi.string().required(),
         role: Joi.string(),
         signUpDate: Joi.date()
-    }).unknown();
+    })
 
     return userJoi.validate(_userToValidate);
 }
