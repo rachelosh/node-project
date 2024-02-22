@@ -12,14 +12,15 @@ export const getAllUsers = async (req, res) => {
     }
 }
 export const login = async (req, res) => {
-    let { email, userName, password } = req.body
+    let { email, userName, password } = req.body;
     let userValidat = userValidator({ email, userName, password })
     if (userValidat.error)
         return res.status(400).send(userValidat.error[0])
     let filter = {
-         email,
-         userName
+        email,
+        userName
     }
+
     try {
         let loggedUser = await User.findOne(filter);
         if (!loggedUser)
@@ -41,7 +42,7 @@ export const addUser = async (req, res) => {
     if (userValidat.error)
         return res.status(400).send(userValidat.error.message)
     try {
-        let hashedPassword = await bcrypt.hash(password, 75);
+        let hashedPassword = await bcrypt.hash(password, 15);
         let newUser = await User.create({ userName, password: hashedPassword, email });
         let { _id, userName: u, email: e, role, signUpDate } = newUser;
         let token = generateToken(newUser);

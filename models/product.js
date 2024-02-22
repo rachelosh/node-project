@@ -1,6 +1,5 @@
 import Joi from "joi";
 import mongoose from "mongoose";
-import { join } from "path";
 
 const productSchema = mongoose.Schema({
     productName: { type: String, required: true },
