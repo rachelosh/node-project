@@ -14,7 +14,7 @@ export const Product = mongoose.model("products", productSchema);
 export const productValidator = (_productToValidate) => {
 
     let productJoi = Joi.object({
-        productName: Joi.string().min(5).max(20).required(),
+        productName: Joi.string().min(5).max(40).required(),
         description: Joi.string(),
         productionDate: Joi.date(),
         imageUrl: Joi.string(),
