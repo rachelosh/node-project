@@ -1,5 +1,4 @@
 import Joi from "joi";
-import { Double } from "mongodb";
 import mongoose from "mongoose";
 
 const productSchema = mongoose.Schema({
@@ -7,7 +6,7 @@ const productSchema = mongoose.Schema({
     description: String,
     productionDate: { type: Date, default: Date.now() },
     imageUrl: String,
-    price: { type: int, required: true }
+    price: { type: Number, required: true }
 })
 
 export const Product = mongoose.model("products", productSchema);
@@ -19,7 +18,7 @@ export const productValidator = (_productToValidate) => {
         description: Joi.string(),
         productionDate: Joi.date(),
         imageUrl: Joi.string(),
-        price: Joi.int().required()
+        price: Joi.number().required()
     })
 
     return productJoi.validate(_productToValidate);
