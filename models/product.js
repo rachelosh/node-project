@@ -7,7 +7,7 @@ const productSchema = mongoose.Schema({
     description: String,
     productionDate: { type: Date, default: Date.now() },
     imageUrl: String,
-    price: { type: Double, required: true }
+    price: { type: int, required: true }
 })
 
 export const Product = mongoose.model("products", productSchema);
@@ -19,7 +19,7 @@ export const productValidator = (_productToValidate) => {
         description: Joi.string(),
         productionDate: Joi.date(),
         imageUrl: Joi.string(),
-        price: Joi.Double().required()
+        price: Joi.int().required()
     })
 
     return productJoi.validate(_productToValidate);
