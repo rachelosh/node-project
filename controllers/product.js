@@ -49,7 +49,7 @@ export const addProduct = async (req, res) => {
     try {
         let newProduct = productValidator(req.body);
         if (newProduct.error)
-            return res.status(400).send("invalid details" + newProduct);
+            return res.status(400).send("invalid details");
         newProduct = await Product.create(req.body);
         res.json(newProduct);
     }
