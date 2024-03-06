@@ -17,7 +17,7 @@ export const userValidator = (_userToValidate) => {
     let userJoi = Joi.object({
         email: Joi.string().email().required(),
         userName: Joi.string().min(5).max(15).required(),
-        password: Joi.string().required(),
+        password: Joi.string().required().regex(/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/),
         role: Joi.string(),
         signUpDate: Joi.date()
     })
