@@ -14,25 +14,6 @@ export const getAllProduct = async (req, res) => {
         res.status(500).send("cannot find the products");
     }
 }
-// export const getAllwines = async (req, res) => {
-//     const { page , perPage , search } = req.query;
-//     try {
-//         let allProducts;
-//         const filter = {};
-//         if (search) {
-//             filter.name = search;
-//         }
-
-//          allProducts = await Wine.find(filter)
-//             .skip((page-1)*perPage)
-//             .limit(perPage);
-
-
-//         res.json(allProducts);
-//     } catch (err) {
-//         res.status(500).send("Unable to retrieve the products");
-//     }
-// }
 
 export const getNumOfPages = async (req, res) => {
     try {
