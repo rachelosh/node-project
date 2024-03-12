@@ -2,7 +2,7 @@ import { Product, productValidator } from "../models/product.js";
 import mongoose from "mongoose";
 
 export const getAllProduct = async (req, res) => {
-    let { search, page, itemsPerPage = 20 } = req.query;
+    let { search, page, itemsPerPage } = req.query;
     try {
         let filter = {};
         if (search)
