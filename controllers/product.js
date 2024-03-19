@@ -16,16 +16,17 @@ export const getAllProduct = async (req, res) => {
 }
 
 export const getNumOfPages = async (req, res) => {
+    let { perPage = 6 } = req.query;
     try {
-        let allProductsCount = await Wine.countDocuments();
-        let perPage = parseInt(req.query.perPage) || 6;
+        let countProducts = await Product.find({}).count();
         console.log("Total number of products: ", allProductsCount);
         console.log("Products per page: ", perPage);
 
-        let numPages = Math.ceil(allProductsCount / perPage);
+        let numPages = countProducts / perPage;
         console.log("Number of pages: ", numPages);
+        
 
-        return res.json({ numPages });
+        return res.json(numPages);
     } catch (err) {
         console.error("An error occurred: ", err);
         return res.status(400).send("An error occurred: " + err);
