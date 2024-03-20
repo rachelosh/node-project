@@ -19,14 +19,14 @@ export const getNumOfPages = async (req, res) => {
     let { perPage = 6 } = req.query;
     try {
         let countProducts = await Product.find({});
-        countProducts = countProducts.length();
+        countProducts = countProducts.length;
         console.log("Total number of products: ", allProductsCount);
         console.log("Products per page: ", perPage);
 
-        let numPages = countProducts / perPage;
+        let numPages = Math.ceil(countProducts / perPage);
         console.log("Number of pages: ", numPages);
 
-        return res.json(numPages);
+        return res.json({numPages});
     } catch (err) {
         console.error("An error occurred: ", err);
         return res.status(400).send("An error occurred: " + err);
