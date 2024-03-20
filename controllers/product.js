@@ -18,13 +18,13 @@ export const getAllProduct = async (req, res) => {
 export const getNumOfPages = async (req, res) => {
     let { perPage = 6 } = req.query;
     try {
-        let countProducts = await Product.find({}).count();
+        let countProducts = await Product.find({});
+        countProducts = countProducts.length();
         console.log("Total number of products: ", allProductsCount);
         console.log("Products per page: ", perPage);
 
         let numPages = countProducts / perPage;
         console.log("Number of pages: ", numPages);
-        
 
         return res.json(numPages);
     } catch (err) {
