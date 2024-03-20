@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 export const getAllUsers = async (req, res) => {
     try {
-        let allusers = await User.find({}, "-password");//projection -לשלוך חלק מהשדות
+        let allusers = await User.find({}, "-password");
         res.json(allusers);
     }
     catch (err) {

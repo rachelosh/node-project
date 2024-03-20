@@ -7,7 +7,6 @@ const minimalProduct = mongoose.Schema({
     quantity: { type: Number, required: true }
 })
 
-
 const orderSchema = mongoose.Schema({
     orderDate: { type: Date, default: Date.now() },
     dueDate: Date,
@@ -16,8 +15,6 @@ const orderSchema = mongoose.Schema({
     products: [minimalProduct],
     isSetOff: { type: Boolean, default: false }
 })
-
-
 export const Order = mongoose.model("orders", orderSchema);
 
 export const orderValidator = (_orderToValidate) => {
@@ -34,8 +31,5 @@ export const orderValidator = (_orderToValidate) => {
         })),
         isSetOff: Joi.boolean()
     })
-
     return orderJoi.validate(_orderToValidate);
 }
-
-

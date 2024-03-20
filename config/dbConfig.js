@@ -11,5 +11,4 @@ export const connectToDB = async () => {
         console.log(err)
         process.exit(1);
     }
-
 }

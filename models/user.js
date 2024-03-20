@@ -9,11 +9,9 @@ const userSchema = mongoose.Schema({
     role: { type: String, default: roleType.USER },
     signUpDate: { type: Date, default: Date.now() }
 })
-
 export const User = mongoose.model("users", userSchema);
 
 export const userValidator = (_userToValidate) => {
-
     let userJoi = Joi.object({
         email: Joi.string().email().required(),
         userName: Joi.string().min(5).max(15).required(),
@@ -21,6 +19,5 @@ export const userValidator = (_userToValidate) => {
         role: Joi.string(),
         signUpDate: Joi.date()
     })
-
     return userJoi.validate(_userToValidate);
 }

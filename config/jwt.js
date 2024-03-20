@@ -1,4 +1,5 @@
 import  jwt  from "jsonwebtoken";
+
 export const generateToken = (user) => {
     let token = jwt.sign(
         { _id: user._id, userName: user.userName, roles: user.role },
@@ -7,7 +8,5 @@ export const generateToken = (user) => {
             expiresIn: "60m"
         }
     )
-
     return token;
-
 }

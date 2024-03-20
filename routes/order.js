@@ -11,4 +11,3 @@ router.get("/:id", auth, orderControllar.getAllOrdersByUserId);
 router.put("/:id", authAdmin, orderControllar.updateSetOffOrder);
 
 export default router;
-

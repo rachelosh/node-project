@@ -14,18 +14,12 @@ export const getAllProduct = async (req, res) => {
         res.status(500).send("cannot find the products");
     }
 }
-
 export const getNumOfPages = async (req, res) => {
     let { perPage = 6 } = req.query;
     try {
         let countProducts = await Product.find({});
         countProducts = countProducts.length;
-        console.log("Total number of products: ", allProductsCount);
-        console.log("Products per page: ", perPage);
-
         let numPages = Math.ceil(countProducts / perPage);
-        console.log("Number of pages: ", numPages);
-
         return res.json({numPages});
     } catch (err) {
         console.error("An error occurred: ", err);
@@ -92,7 +86,6 @@ export const updateProductById = async (req, res) => {
         productToUpdate.price = price || productToUpdate.price;
         productToUpdate.save();
         res.json(productToUpdate);
-
     }
     catch (err) {
         res.status(500).send("cannot find the product to update");

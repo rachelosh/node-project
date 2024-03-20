@@ -35,7 +35,6 @@ export const deleteOrderById = async (req, res) => {
     catch (err) {
         res.status(500).send("cannot delete order");
     }
-
 }
 export const getAllOrdersByUserId = async (req, res) => {
     try {

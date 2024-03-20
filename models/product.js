@@ -8,11 +8,9 @@ const productSchema = mongoose.Schema({
     imageUrl: String,
     price: { type: Number, required: true }
 })
-
 export const Product = mongoose.model("products", productSchema);
 
 export const productValidator = (_productToValidate) => {
-
     let productJoi = Joi.object({
         productName: Joi.string().min(5).max(40).required(),
         description: Joi.string(),
@@ -20,6 +18,5 @@ export const productValidator = (_productToValidate) => {
         imageUrl: Joi.string(),
         price: Joi.number().required()
     })
-
     return productJoi.validate(_productToValidate);
 }
