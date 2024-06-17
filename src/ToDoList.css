@@ -1,0 +1,24 @@
+.longTask{
+    font-size: larger;
+    color: crimson;
+}
+.notLong{
+    color: darkslategrey;
+}
+ul{
+    list-style-type: none;
+}
+.task{
+    padding: 20px;
+    
+}
+.btnTask{
+    width: 60px;
+    height: 30px;
+   margin:10px 30px;
+   background-color: rgb(14, 99, 156);
+}
+#tasksHeader{
+    padding: 30px;
+    margin-left: 20px;
+}
